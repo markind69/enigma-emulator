@@ -7,6 +7,8 @@ The surprise for me in researching the Enigma machine is that it is fundamentall
 
 In a more complex version of the Caesar code, the offset is increased by one, modulo 26 (or whatever the size of your alphabet), for each character encoded. In this instance, with an initial offset of 2, "ABCD" becomes "CEGI", because the offset from "A" is 2, from "B" is 3, and so on. 
 
+For further discussion of this, check out Harald Schmidl's [project](http://www.cs.miami.edu/home/harald/enigma) on the subject of Enigma, which I used extensively to validate my implementation.
+
 ### How Enigma Encodes a Character
 For all practical purposes, the Enigma machine does a variation of this, mixed with a simple substitution cipher, but encoded three times in a row across all rotors, further encoded with a simple substitution cipher in the "Reflector". The encoding is then made backwards through the three rotors again. Finally, to further obfuscate the original character, both the input and the output are run through the "plugboard", in which some pairs of characters are swapped. As a character is encoded, the first rotor has its position advanced by one. When any rotor advances past "Z", the next rotor in order is advanced by one.
 
