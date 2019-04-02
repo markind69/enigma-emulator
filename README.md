@@ -25,7 +25,9 @@ The upshot of this encoding, reflection, and backwards encoding is that the Enig
 The code runs using Python (version 3). In the directory containing the code, run "$ python3 Enigma.py"
 
 `$ python3 Enigma.py`
+
 `Input the message to be encoded`
+
 `Only alphabetic values, without spaces or punctuation, are accepted.`
 
 `Hit return without typing any message to exit.`
