@@ -1,5 +1,5 @@
 class Rotor():
-    rotorIds = ['I','II','III','IV','V','RFL']
+    rotorIds = ['I', 'II', 'III', 'IV', 'V', 'RFL']
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     wirings = [
         "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
@@ -10,11 +10,11 @@ class Rotor():
         "YRUHQSLDPXNGOKMIEBFZCWVJAT"
     ]
 
-    def __init__(self, rotorId, pos = '0', ring = '0'):
-        self.id = rotorId.upper()
+    def __init__(self, rotor_id, pos='0', ring='0'):
+        self.id = rotor_id.upper()
         assert self.id in self.rotorIds, "unrecognized Rotor ID " + self.id
-        rotorNum = self.rotorIds.index(self.id)
-        self.wiring = self.wirings[rotorNum]
+        rotor_num = self.rotorIds.index(self.id)
+        self.wiring = self.wirings[rotor_num]
 
         self.position = int(pos)
         assert self.position >= 0 and self.position < 26, "Initial position must be between 0 and 25"
@@ -27,7 +27,7 @@ class Rotor():
         if self.position == 26:
             self.position = 0
 
-    def forwardEncode(self, ch):
+    def forward_encode(self, ch):
         assert ch.isalpha()
         ch = ch.upper()
         chidx = ord(ch) - ord('A')
@@ -38,7 +38,7 @@ class Rotor():
         chidx = (chidx + self.ring) % 26
         return chr(((chidx - self.position) % 26) + ord('A'))
 
-    def backwardEncode(self, ch):
+    def backward_encode(self, ch):
         assert ch.isalpha()
         ch = ch.upper()
         chidx = ord(ch) - ord('A')
