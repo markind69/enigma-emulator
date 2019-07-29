@@ -1,7 +1,7 @@
 import numpy as np
 
 class Rotor():
-    rotorIds = ['I','II','III','IV','V','RFL']
+    rotorIds = ['I', 'II', 'III', 'IV', 'V', 'RFL']
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     wirings = [
         "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
@@ -34,7 +34,7 @@ class Rotor():
         if self.position == 26:
             self.position = 0
 
-    def forwardEncode(self, ch):
+    def forward_encode(self, ch):
         assert ch.isalpha()
         ch = ch.upper()
         chidx = ord(ch) - ord('A')
@@ -45,7 +45,7 @@ class Rotor():
         chidx = (chidx + self.ring) % 26
         return chr(((chidx - self.position) % 26) + ord('A'))
 
-    def backwardEncode(self, ch):
+    def backward_encode(self, ch):
         assert ch.isalpha()
         ch = ch.upper()
         chidx = ord(ch) - ord('A')
