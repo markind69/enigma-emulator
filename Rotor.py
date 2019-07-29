@@ -1,3 +1,5 @@
+import numpy as np
+
 class Rotor():
     rotorIds = ['I','II','III','IV','V','RFL']
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10,11 +12,16 @@ class Rotor():
         "YRUHQSLDPXNGOKMIEBFZCWVJAT"
     ]
 
+    def selectRotor(self, rotorNum):
+        encoding = [ord(ch) for ch in self.wirings[rotorNum]]
+        return np.array(encoding)
+
     def __init__(self, rotorId, pos = '0', ring = '0'):
         self.id = rotorId.upper()
         assert self.id in self.rotorIds, "unrecognized Rotor ID " + self.id
         rotorNum = self.rotorIds.index(self.id)
-        self.wiring = self.wirings[rotorNum]
+
+        self.wiring = self.selectRotor(rotorNum)
 
         self.position = int(pos)
         assert self.position >= 0 and self.position < 26, "Initial position must be between 0 and 25"
