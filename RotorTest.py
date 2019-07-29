@@ -19,7 +19,7 @@ class TestRotor(unittest.TestCase):
         for rotor in rotors:
             assert len(rotor.wiring) == 26, "Rotor does not have correct wiring"
             for letter in alphabet:
-                assert letter in rotor.wiring, "Letter not wired in rotor"
+                assert ord(letter) in rotor.wiring, "Letter not wired in rotor"
 
     # Test forward mapping with position and rings at 0
     def testForwardMapping(self):
@@ -30,7 +30,7 @@ class TestRotor(unittest.TestCase):
 
         rotorIdx = 0
         for rotor in rotors:
-            assert rotor.forwardEncode('A') == letters[rotorIdx], "Failed to encode letter correctly"
+            assert rotor.forward_encode('A') == letters[rotorIdx], "Failed to encode letter correctly"
             rotorIdx += 1
 
     # Test forward mapping with position change
@@ -40,7 +40,7 @@ class TestRotor(unittest.TestCase):
 
         rotorIdx = 0
         for rotor in rotors:
-            assert rotor.forwardEncode('A') == letters[rotorIdx], "Failed to advance rotor correctly"
+            assert rotor.forward_encode('A') == letters[rotorIdx], "Failed to advance rotor correctly"
             rotorIdx += 1
 
     # Test forward mapping with ring setting
@@ -49,7 +49,7 @@ class TestRotor(unittest.TestCase):
         letters = "KFPCL"
         rotorIdx = 0
         for rotor in rotors:
-            assert rotor.forwardEncode('A') == letters[rotorIdx], "Failed to apply ring correctly"
+            assert rotor.forward_encode('A') == letters[rotorIdx], "Failed to apply ring correctly"
             rotorIdx += 1
 
     # Test backward mapping with position and rings at 0
@@ -59,7 +59,7 @@ class TestRotor(unittest.TestCase):
 
         rotorIdx = 0
         for rotor in rotors:
-            assert rotor.backwardEncode('A') == letters[rotorIdx], "Failed to encode letter correctly"
+            assert rotor.backward_encode('A') == letters[rotorIdx], "Failed to encode letter correctly"
             rotorIdx += 1
 
     # Test backward mapping with position change
@@ -69,7 +69,7 @@ class TestRotor(unittest.TestCase):
 
         rotorIdx = 0
         for rotor in rotors:
-            assert rotor.backwardEncode('A') == letters[rotorIdx], "Failed to advance rotor correctly"
+            assert rotor.backward_encode('A') == letters[rotorIdx], "Failed to advance rotor correctly"
             rotorIdx += 1
 
     # Test backward mapping with ring setting
@@ -79,7 +79,7 @@ class TestRotor(unittest.TestCase):
 
         rotorIdx = 0
         for rotor in rotors:
-            assert rotor.backwardEncode('A') == letters[rotorIdx], "Failed to apply ring correctly"
+            assert rotor.backward_encode('A') == letters[rotorIdx], "Failed to apply ring correctly"
             rotorIdx += 1
 
 if __name__ == '__main__':

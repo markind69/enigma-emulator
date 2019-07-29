@@ -41,7 +41,7 @@ class Rotor():
         idx = (chidx + self.position) % 26
         idx = (idx - self.ring) % 26
         # Adjust idx for rings (need to review ring model)
-        chidx = ord(self.wiring[idx]) - ord('A')
+        chidx = self.wiring[idx] - ord('A')
         chidx = (chidx + self.ring) % 26
         return chr(((chidx - self.position) % 26) + ord('A'))
 
@@ -52,6 +52,6 @@ class Rotor():
         idx = (chidx + self.position) % 26
         idx = (idx - self.ring) % 26
         # Adjust idx for rings (need to review ring model)
-        chidx = self.wiring.index(chr(idx + ord('A')))
+        chidx = np.where(self.wiring == idx + ord('A'))[0]
         chidx = (chidx + self.ring) % 26
         return chr(((chidx - self.position) % 26) + ord('A'))
