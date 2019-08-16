@@ -71,9 +71,9 @@ class TestEnigma(unittest.TestCase):
 
     def testPlugboardCreation(self):
         e = Enigma(self.createRotorConfig())
-        assert e.plugboard.getWiring('A') == 'M'
-        assert e.plugboard.getWiring('T') == 'E'
-        assert e.plugboard.getWiring('X') == 'X'
+        assert e.plugboard.get_wiring('A') == 'M'
+        assert e.plugboard.get_wiring('T') == 'E'
+        assert e.plugboard.get_wiring('X') == 'X'
 
     # I was able to verify these encodings against the enigmaco.de emulator, among
     # others, with identical settings.
